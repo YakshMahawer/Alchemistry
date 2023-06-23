@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
+import { ReactComponent as TestTube } from './testtube.svg';
 
 const Lab = () => {
     const navigate = useNavigate();
@@ -17,6 +18,7 @@ const Lab = () => {
             <p>{chemC}</p>
             <input type="range" name="d" id="" min="0" max="100" value={chemD} onChange={(e) => {setChemD(e.target.value)}} />
             <p>{chemD}</p>
+            <TestTube />
             <button onClick={() => {navigate('/result', {repalce: true, state:{chemA, chemB, chemC, chemD}})}}>PLAY</button>
         </div>
     )
