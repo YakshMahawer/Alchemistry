@@ -1,0 +1,30 @@
+.sideBar{
+    height: 100%;
+    background-color: rgb(27, 27, 27);
+    width: 4.1%;
+
+}
+
+.element{
+    padding: 19px 8px;
+}
+
+.elements{
+    padding-top: 69px;
+}
+
+.element_button{
+    color: aliceblue;
+    background-color: transparent;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+span{
+    font-size: 24px;
+    font-weight: 600;
+    font-family: 'Ubuntu', 'sans-serif';
+}
+
+
