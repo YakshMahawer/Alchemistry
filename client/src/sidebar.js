@@ -1,12 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./sidebar.css";
 import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   const [selectedTab, setSelectedTab] = useState("");
 
+  useEffect(() => {
+    const currentRoute = window.location.pathname;
+    setSelectedTab(getTabFromRoute(currentRoute));
+  }, []);
+
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
+  };
+
+  const getTabFromRoute = (route) => {
+    switch (route) {
+      case "/lab":
+        return "lab";
+      case "/titration":
+        return "titration";
+      case "/organic":
+        return "organic";
+      case "/inorganic":
+        return "inorganic";
+      default:
+        return "";
+    }
   };
 
   return (
@@ -22,7 +42,7 @@ const Sidebar = () => {
           >
             <button
               className={`element_button lab_button ${
-                selectedTab === "lab" ? "yellow" : ""
+                selectedTab === "lab" ? "selected" : ""
               }`}
             >
               <i className="fa-solid fa-flask"></i>
@@ -41,7 +61,7 @@ const Sidebar = () => {
           >
             <button
               className={`element_button titration_button ${
-                selectedTab === "titration" ? "blue" : ""
+                selectedTab === "titration" ? "selected" : ""
               }`}
             >
               <i className="fa-solid fa-flask-vial"></i>
@@ -60,7 +80,7 @@ const Sidebar = () => {
           >
             <button
               className={`element_button organic_button ${
-                selectedTab === "organic" ? "blue" : ""
+                selectedTab === "organic" ? "selected" : ""
               }`}
             >
               <i className="fa-solid fa-c"></i>
@@ -79,7 +99,7 @@ const Sidebar = () => {
           >
             <button
               className={`element_button inorganic_button ${
-                selectedTab === "inorganic" ? "blue" : ""
+                selectedTab === "inorganic" ? "selected" : ""
               }`}
             >
               <span>Na</span>
