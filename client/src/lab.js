@@ -14,9 +14,8 @@ const Lab = () => {
     const remainingValue = 100 - value;
 
     setChemA(value);
-    setChemB(Math.min(chemB, remainingValue, 0));
-    setChemC(Math.min(chemC, remainingValue - chemB, 0));
-    setChemD(Math.min(chemD, remainingValue - chemB - chemC, 0));
+    setChemC(Math.max(0, Math.min(chemC, remainingValue - chemB)));
+    setChemD(Math.max(0, Math.min(chemD, remainingValue - chemB - chemC)));
   };
 
   const handleChemBChange = (e) => {
@@ -24,8 +23,8 @@ const Lab = () => {
     const remainingValue = 100 - chemA - value;
 
     setChemB(value);
-    setChemC(Math.min(chemC, remainingValue, 0));
-    setChemD(Math.min(chemD, remainingValue - chemC, 0));
+    setChemC(Math.max(0, Math.min(chemC, remainingValue)));
+    setChemD(Math.max(0, Math.min(chemD, remainingValue - chemC)));
   };
 
   const handleChemCChange = (e) => {
@@ -33,12 +32,14 @@ const Lab = () => {
     const remainingValue = 100 - chemA - chemB - value;
 
     setChemC(value);
-    setChemD(Math.min(chemD, remainingValue, 0));
+    setChemD(Math.max(0, Math.min(chemD, remainingValue)));
   };
 
   const handleChemDChange = (e) => {
     const value = parseInt(e.target.value);
-    setChemD(value);
+    const remainingValue = 100 - chemA - chemB - chemC;
+
+    setChemD(Math.max(0, Math.min(value, remainingValue)));
   };
 
   const handlePlayClick = () => {
