@@ -38,7 +38,7 @@ const Sidebar = () => {
           onClick={() => handleTabClick("lab")}
         >
           <div
-            className={`element lab ${selectedTab === "lab" ? "selected" : ""}`}
+            className={`element ${selectedTab === "lab" ? "selected" : ""}`}
           >
             <button
               className={`element_button lab_button ${

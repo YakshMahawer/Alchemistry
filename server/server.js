@@ -62,19 +62,15 @@ const resultSchema = new mongoose.Schema({
     },
     product_name: {
         type: String,
-        required: true
     },
-    product_img: {
+    product_info: {
         type: String,
-        required: true
     },
     product_properties: {
         type: Array,
-        required: true
     },
     product_uses: {
         type: Array,
-        required: true
     }
 });
 
@@ -86,16 +82,66 @@ app.get('/result/:chem_a/:chem_b/:chem_c/:chem_d', async (req, res) => {
     let chem_c = req.params['chem_c'];
     let chem_d = req.params['chem_d'];
     const add = Number(chem_a)+ Number(chem_b) + Number(chem_c) + Number(chem_d);
-    if(add != 100){
+    if(add < 100){
         chem_a = (chem_a/add)*100;
         chem_b = (chem_b/add)*100;
         chem_c = (chem_c/add)*100;
         chem_d = (chem_d/add)*100;
     }
-    const a = Math.round(chem_a/10)*10;
-    const b = Math.round(chem_b/10)*10;
-    const c = Math.round(chem_c/10)*10;
-    const d = Math.round(chem_d/10)*10;
+    var a = Math.round(chem_a/10)*10;
+    var b = Math.round(chem_b/10)*10;
+    var c = Math.round(chem_c/10)*10;
+    var d = Math.round(chem_d/10)*10;
+
+    var final_add = a + b + c + d;
+    if(final_add < 100){
+        console.log(final_add);
+        var number_to_be_increamented = Math.max(a,b,c,d);
+        if(a == number_to_be_increamented){
+            a += 10;
+        }
+        else if(b == number_to_be_increamented){
+            b += 10;
+        }
+        else if(c == number_to_be_increamented){
+            c += 10;
+        }
+        else{
+            d += 10;
+        }
+    }
+
+    if(final_add > 100){
+        var for_min_a = a;
+        var for_min_b = b;
+        var for_min_c = c;
+        var for_min_d = d;
+        if(for_min_a === 0){
+            for_min_a = 1000;
+        }
+        if(for_min_b === 0){
+            for_min_b = 1000;
+        }
+        if(for_min_c === 0){
+            for_min_c = 1000;
+        }
+        if(for_min_d === 0){
+            for_min_d = 1000;
+        }
+        var number_to_be_decreamented = Math.min(for_min_a,for_min_b,for_min_c,for_min_d);
+        if(a == number_to_be_decreamented){
+            a -= 10;
+        }
+        else if(b == number_to_be_decreamented){
+            b -= 10;
+        }
+        else if(c == number_to_be_decreamented){
+            c -= 10;
+        }
+        else{
+            d -= 10;
+        }
+    }
     let sum = 0;
     if(a!=0){
         sum+=1;
@@ -110,8 +156,10 @@ app.get('/result/:chem_a/:chem_b/:chem_c/:chem_d', async (req, res) => {
         sum+=1000;
     }
     console.log(a,b,c,d, sum);
-    const result_data = await Result.find({conc_a: a, conc_b: b, conc_c: c, conc_d: d, reaction_id: sum});
-    res.json(result_data);
+    const result_data = await Result.findOne({conc_a: a, conc_b: b, conc_c: c, conc_d: d, reaction_id: sum});
+    const data = [];
+    data.push(result_data);
+    res.json(data);
 });
 
 app.listen(5000, () => {
