@@ -1,0 +1,163 @@
+.login-page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+  }
+
+  .login-elements {
+    position: fixed;
+    width: 90%;
+    top: 0;
+    padding-top: 10px;
+    filter: blur(3px);
+    z-index: 1;
+  }
+
+  .login-elements img{
+    width: 100%;
+  }
+  
+  .quate {
+    font-size: 18px;
+    margin-top: 30px;
+    text-align: center;
+    font-family: 'Urbanist', sans-serif;    
+    color: gray;
+  }
+
+  .quate-2 {
+    font-size: 22px;
+    margin-top: 5px;
+    text-align: center;
+    font-family: 'Urbanist', sans-serif;    
+    color: black;
+  }
+  
+  .login-container {
+    text-align: center;
+    background-color: white;
+    margin-top: 60px;
+    padding: 30px;
+    border-radius: 50px;
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .input-container input {
+    margin-right: 10px;
+  }
+  
+  .logo {
+    text-align: center;
+  }
+
+  h2{
+    margin-top: 0;
+  }
+
+  button.login-button {
+    width: 100%; 
+    margin-top: 20px; 
+    padding: 10px;
+    font-size: larger;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  button.login-button:hover{
+    background-color: rgb(146, 230, 181);
+  }
+
+  button.otp{
+    background-color: transparent;
+    padding: 8px;
+    border: 1px solid;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+
+  }
+
+  button.otp:hover {
+    background-color: #cccaca;
+
+  }
+
+  button.otp:active {
+    background-color: darkgrey;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+
+  }
+
+  .country-code {
+    font-size: 16px;
+    font-weight: 200;
+    margin-right: 5px;
+    padding-bottom: 2px;
+  }
+
+  .underline-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+    margin-bottom: 9px;
+  }
+  
+  .underline-input input {
+    border: none;
+    border-bottom: 2px solid #000;
+    outline: none;
+    padding: 5px 0;
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  .underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #000;
+  }
+
+  .otp-input input{
+    width: 100%;
+    padding: 8px 0;
+    border: 2px solid;
+  }
+
+  .image-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .image-container img {
+    width: 420px;
+    height: auto;
+  }
+
+  .image-container-2 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 20px;
+  }
+  
+  .image-container-2 img {
+    width: 370px;
+    height: auto;
+  }
+  
