@@ -2,7 +2,6 @@ import React, { useState, useLayoutEffect, useRef } from "react";
 import {gsap} from 'gsap';
 import { useNavigate } from "react-router-dom";
 import Sidebar from "./sidebar";
-import Banner from "./banner";
 import CustomTestTube from "./testtube";
 import hcl from './hcl.png'
 import feso4 from './feso4.png'

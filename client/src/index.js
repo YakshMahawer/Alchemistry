@@ -8,6 +8,7 @@ import Lab from "./lab";
 import Organic from "./organic";
 import Titration from "./titration";
 import Inorganic from "./inorganic";
+import Success from "./success";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,6 +20,7 @@ root.render(
       <Route path="organic" element={<Organic />} />
       <Route path="titration" element={<Titration />} />
       <Route path="inorganic" element={<Inorganic />} />
+      <Route path="success" element={<Success />} />
     </Routes>
   </BrowserRouter>
 );
