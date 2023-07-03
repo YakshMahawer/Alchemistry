@@ -34,3 +34,8 @@ span{
     color: black;
   }
 
+.logout_button {
+    padding-left: 8px;
+    padding-top: 19px;
+}
+

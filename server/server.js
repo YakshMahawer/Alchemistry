@@ -89,9 +89,9 @@ const resultSchema = new mongoose.Schema({
 const Result = new mongoose.model("Result", resultSchema);
 
 const accountSid = "AC8fbcbb0b7a148fa20971cf47f72409ad";
-const authToken = "80fd11730ac265892c1d71069419da93";
+const authToken = "27d697d88ac06b91e01b8966c313d795";
 const twilioClient = twilio(accountSid, authToken);
-const twilioPhoneNumber = "(417) 557-3027";
+const twilioPhoneNumber = "+14175573027";
 const jwtSecretKey = "ALchemistry";
 
 function generateOTP() {
@@ -148,7 +148,7 @@ app.post("/api/login", async (req, res) => {
 
       user.token = token;
       await user.save();
-      res.cookie("token", token, { httpOnly: true });
+      res.cookie("token", token);
 
       res.json({ success: true, message: "Login successful", token });
     } else {
@@ -301,6 +301,27 @@ app.get("/api/history", authenticateToken, async (req, res) => {
 
 app.get("/history", (req, res) => {
   res.render("history", { history: req.user.reactionHistory });
+});
+
+app.post("/api/logout", authenticateToken, async (req, res) => {
+  try {
+    const user = await User.findOne({ mobileNumber: req.user.mobileNumber });
+
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+
+    user.token = null;
+    await user.save();
+    res.clearCookie("token");
+
+    res.json({ success: true, message: "Logout successful" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Logout failed" });
+  }
 });
 
 app.listen(5000, () => {

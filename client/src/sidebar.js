@@ -14,6 +14,27 @@ const Sidebar = () => {
     setSelectedTab(tab);
   };
 
+  const handleLogout = () => {
+    fetch("/api/logout", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          localStorage.removeItem("token");
+
+          window.location.href = "/login";
+        } else {
+          console.error("Logout failed");
+        }
+      })
+      .catch((error) => {
+        console.error("Logout failed", error);
+      });
+  };
+
   const getTabFromRoute = (route) => {
     switch (route) {
       case "/lab":
@@ -37,9 +58,7 @@ const Sidebar = () => {
           activeClassName="selected"
           onClick={() => handleTabClick("lab")}
         >
-          <div
-            className={`element ${selectedTab === "lab" ? "selected" : ""}`}
-          >
+          <div className={`element ${selectedTab === "lab" ? "selected" : ""}`}>
             <button
               className={`element_button lab_button ${
                 selectedTab === "lab" ? "selected" : ""
@@ -106,6 +125,31 @@ const Sidebar = () => {
             </button>
           </div>
         </NavLink>
+
+        <NavLink
+          to="/history"
+          activeClassName="selected"
+          onClick={() => handleTabClick("history")}
+        >
+          <div
+            className={`element history ${
+              selectedTab === "history" ? "selected" : ""
+            }`}
+          >
+            <button
+              className={`element_button history_button ${
+                selectedTab === "history" ? "selected" : ""
+              }`}
+            >
+              <span>H.</span>
+            </button>
+          </div>
+        </NavLink>
+        <div className="logout_button">
+          <button className="element_button" onClick={handleLogout}>
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </button>
+        </div>
       </div>
     </div>
   );

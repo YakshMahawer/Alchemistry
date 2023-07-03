@@ -17,12 +17,12 @@ root.render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="result" element={<Result />} />
-      <Route path="history" element={<History />} />
       <Route path="lab" element={<Lab />} />
       <Route path="organic" element={<Organic />} />
       <Route path="titration" element={<Titration />} />
       <Route path="inorganic" element={<Inorganic />} />
       <Route path="login" element={<Login />} />
+      <Route path="history" element={<History />} />
     </Routes>
   </BrowserRouter>
 );
