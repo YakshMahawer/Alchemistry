@@ -10,21 +10,50 @@ import Bubble from './banner'
 import back from './back.jpg'
 import './result.css'
 
-const Result = (props) => {
+const Result = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const chemh = "M 218.985 165.204 V 384.283 C 218.985 397.931 232.87 409 250.003 409 C 267.136 409 281.02 397.935 281.02 384.283 V" + (387.28 - (location.state.chemA + location.state.chemB + location.state.chemC + location.state.chemD)*3.3) + "H 218.985 Z";
 
     const [data, setData] = useState();
+    const localCart = JSON.parse(localStorage.getItem('cart'));
+    const [cart, setCart] = useState(localCart);
     useEffect(() => {
         fetch("/result/" + location.state.chemA + "/" + location.state.chemB + '/' + location.state.chemC + '/' + location.state.chemD).then(
           response => response.json()
         ).then(
           data => {
-            setData(data)
+            setData(data);
+            const d = new Date();
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+            const date = d.getDate();
+            const month = months[d.getMonth()];
+            const year = d.getFullYear();
+            const hr = d.getHours();
+            const min = d.getMinutes();
+            let rdx = {
+              "date": date + " " + month + " " + year,
+              "time": hr + ":" + min,
+              "conc_a": location.state.chemA,
+              "conc_b": location.state.chemB,
+              "conc_c": location.state.chemC,
+              "conc_d": location.state.chemD,
+              "color": data[0].color,
+              "main": data[0].product_name
+            }
+            if(cart === null){
+              setCart([rdx]);
+            }
+            else{
+              setCart([...cart, rdx]);
+            }
           }
         )
-      }, [])
+      }, []);
+
+      useEffect(()=>{
+        localStorage.setItem('cart', JSON.stringify(cart));
+      }, [cart]);
     return(
         <div>
         
@@ -85,7 +114,7 @@ const Result = (props) => {
                       <div className="testube_info">
                           <div className="result_smell">
                           <img src={cloud} alt="" />
-                          <div className="result_smell_text">{(location.state.chemA > 0)? "Pungent Smell Due to HCl": "No Specific Smell"}</div>
+                          <div className="result_smell_text" id={(location.state.chemA > 0)? "": "bio"}>{(location.state.chemA > 0)? "Pungent Smell Due to HCl": "No Specific Smell"}</div>
                           </div>
                           <div className="result_equation">{item.result}</div>
                           <div className="resultant_testtube">

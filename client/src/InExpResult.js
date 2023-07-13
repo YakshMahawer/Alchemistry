@@ -2,41 +2,58 @@ import React, { useState } from "react";
 import ResultCustomTestTube from "./result_testtube";
 import labgif from './labgigbl.gif'
 
-const InExpResult = ({num}) => {
+const InExpResult = ({num, on}) => {
+    const str = "M 218.985 165.204 V 384.283 C 218.985 397.931 232.87 409 250.003 409 C 267.136 409 281.02 397.935 281.02 384.283 V 300H 218.985 Z";
     const all_details = [
         {
-            "color": "#FFF000",
-            "characterstics": ["jdndvmklv vrvr", "rjnr rn", "fjnv jrn kdne ejn", "dnkrngbn"]
+            "color": "#d1d69b",
+            "characterstics": ["Rusty Smell", "Brown fumes formed", "No change in color after heat", "No precipitate formed"]
         },
         {
-            "color": "#FFF000",
-            "characterstics": ["jdndvmklv vrvr", "rjnr rn", "fjnv jrn kdne ejn", "dnkrngbn"]
+            "color": "#fdffff",
+            "characterstics": ["Bubbles formed", "CO2 gas formed", "Lime water does not turn milky", "No specific smell"]
         },
         {
-            "color": "#FFF000",
-            "characterstics": ["jdndvmklv vrvr", "rjnr rn", "fjnv jrn kdne ejn", "dnkrngbn"]
+            "color": "#e26c50",
+            "characterstics": ["No precipitates formed", "No specific smell", "No smoke", "Lead Acetate didn't turned black"]
         },
         {
-            "color": "#FFF000",
-            "characterstics": ["jdndvmklv vrvr", "rjnr rn", "fjnv jrn kdne ejn", "dnkrngbn"]
+            "color": "#010202",
+            "characterstics": ["No specific smell", "Pottasium Dichromate didn't turned green", "No precipitates formed", "No smoke"]
         },
         {
-            "color": "#FFF000",
-            "characterstics": ["jdndvmklv vrvr", "rjnr rn", "fjnv jrn kdne ejn", "dnkrngbn"]
+            //Apna wala
+            "color": "#0233AD",
+            "characterstics": ["Brown fumes", "Turned starch solution blue", "Pungent smell", "Yellow particles formed"]
         },
         {
-            "color": "#FFF000",
-            "characterstics": ["jdndvmklv vrvr", "rjnr rn", "fjnv jrn kdne ejn", "dnkrngbn"]
+            "color": "#c6bd85",
+            "characterstics": ["Rusty Smell", "Solution turned thick", "No precipitates formed", "Bubbles formed initially"]
         },
         {
-            "color": "#FFF000",
-            "characterstics": ["jdndvmklv vrvr", "rjnr rn", "fjnv jrn kdne ejn", "dnkrngbn"]
+            "color": "#d0cca8",
+            "characterstics": ["Pungent Smell", "Yellow smoke", "color didn't changed after heating", "Solution turned thick"]
         },
         {
-            "color": "#FFF000",
-            "characterstics": ["jdndvmklv vrvr", "rjnr rn", "fjnv jrn kdne ejn", "dnkrngbn"]
+            "color": "#a6a295",
+            "characterstics": ["No specific smell", "No white fumes", "No precipitates formed", "Didn't dissolve Magnesium Dioxide"]
+        },
+        {
+            "color": "#f8fce9",
+            "characterstics": ["No specific smell", "No smoke", "No ring formed when reacted with Ferrous", "No precipitates formed"]
+        },
+        {
+            "color": "#f8fce9",
+            "characterstics": ["Solution didn't mix", "No smoke formed", "No specific smell", "No precipitates formed"]
+        },
+        {
+            "color": "#FFDD33",
+            "characterstics": ["Pungent smell", "Yellow Brown high fumes", "Bubbles formed", "No solids formed"]
+        },
+        {
+            "color": "#EFEBD6",
+            "characterstics": ["No specific smell", "Yellow solids formed", "No smoke", "Soluble in HCl"]
         }
-
     ]
     const [data, setData] = useState(undefined);
     setTimeout(() => {
@@ -46,14 +63,14 @@ const InExpResult = ({num}) => {
     return(
         <div>
         {
-            (data === undefined)?(
+            (on)?(
                 <div className="load_div">
                     <img src={labgif} alt="" />
                 </div>
             ):
             (
                 <div className="result_div">
-                <ResultCustomTestTube color="#FFF000"/>
+                <ResultCustomTestTube color={all_details[num].color} str={str}/>
                 <div className="info_1">{all_details[num].characterstics[0]}</div>
                 <div className="info_2">{all_details[num].characterstics[1]}</div>
                 <div className="info_3">{all_details[num].characterstics[2]}</div>

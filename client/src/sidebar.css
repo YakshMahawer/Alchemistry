@@ -32,5 +32,12 @@ span{
     border-bottom-left-radius: 30%;
     background-color: white;
     color: black;
-  }
+}
+
+.star_div > img{
+    left: -5px;
+    height: 60px;
+    position: absolute;
+    z-index: 6;
+}
 

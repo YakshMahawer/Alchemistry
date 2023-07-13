@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose =  require('mongoose');
+const bodyParser = require("body-parser");
 const app = express();
+app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
 mongoose.connect("mongodb+srv://alchemy:alchemy4toycathon@alchemy.jcvapqk.mongodb.net/?retryWrites=true&w=majority", {
      useNewUrlParser: true,
@@ -75,6 +77,7 @@ const resultSchema = new mongoose.Schema({
 });
 
 const Result = new mongoose.model('Result',resultSchema);
+
 
 app.get('/result/:chem_a/:chem_b/:chem_c/:chem_d', async (req, res) => {
     let chem_a = req.params['chem_a'];
@@ -161,6 +164,9 @@ app.get('/result/:chem_a/:chem_b/:chem_c/:chem_d', async (req, res) => {
     data.push(result_data);
     res.json(data);
 });
+
+
+
 
 app.listen(5000, () => {
     console.log("Connected to server");

@@ -10,17 +10,22 @@ import './organic.css'
 
 const Organic = () => {
   const navigate = useNavigate();
+  const [on, setOn] = useState(false);
   const [first, setFirst] = useState(true);
   const [datanum, setDatanum] = useState(0);
   const [wrong, setWrong] = useState(false);
   const [uans, setUAns] = useState('');
   function send_info(i){
+    setOn(true);
+    setTimeout(() => {
+      setOn(false);
+    }, 1000);
     setFirst(false);
     setDatanum(i);
   }
 
   function checkAns(){
-    if(uans === '1'){
+    if(uans === '2'){
       navigate("/success", {
         replace: true,
       });
@@ -42,12 +47,12 @@ const Organic = () => {
       <Sidebar />
       <div className="working_space lab">
         <img className="school" src={back} alt="" />
-        <div className="note"><span className="note_text">NOTE: </span>All aqeuous solutions are of 1 M</div>
+        <div className="note"><span className="note_text">NOTE: </span>Refer Your Chemistry Lab Mannual Page - 70</div>
         <div className="logo"><img src={logo} alt="" /></div>
         <div className="experiment_area">
           <div className="visible_exp">
             {
-              (first)? <CompoundImg/>:<ExpResult num = {datanum}/>
+              (first)? <CompoundImg/>:<ExpResult num = {datanum} on = {on}/>
             }
           </div>
           <div className="exp_buttons">

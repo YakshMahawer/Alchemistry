@@ -44,6 +44,7 @@
 }
 
 .info_3{
+    right: 1234px;
     transform: translate(355px, -171px) scale(0);
     animation: boom_3 500ms ease-in-out forwards 300ms;
 }
@@ -55,6 +56,8 @@
 }
 
 .info_4{
+    right: 1317px;
+    max-width: 210px;
     transform: translate(424px, -345px) scale(0);
     animation: boom_4 500ms ease-in-out forwards 400ms;
 }
@@ -129,7 +132,7 @@
     border-radius: 9px;
     margin: 0px 5px;
     border: none;
-    background-color: #F8748C;
+    background-color: pink;
     font-size: 22px;
     font-weight: 700;
     padding: 8px 16px;
@@ -166,6 +169,7 @@
 }
 
 .input_ans > button{
+    border-radius: 15px;
     font-weight: 700;
     border-radius: -3px;
     background-color: #74D031;
@@ -177,6 +181,11 @@
     cursor: pointer;
     position: relative;
     z-index: 5;
+    color: snow;
+}
+
+.input_ans > button:hover{
+    background-color: #9cfe57;
 }
 
 .load_div{

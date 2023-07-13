@@ -65,6 +65,7 @@ progress {
     border: 0px solid;
     margin-right: 6px;
  }
+
  progress::-webkit-progress-bar {
     -webkit-appearance: none;
     background-color: rgba(127, 127, 127, 0.319);
@@ -80,8 +81,7 @@ progress {
  }
 
  .product_info{
-    border-left: 4px solid #f97d8a;
-    background-color: #f97d8a7d;
+    background-color: #87e6ff;
     position: relative;
     right: -286px;
     height: 680px;
@@ -107,9 +107,10 @@ progress {
  }
 
  .p_heading{
+   padding-top: 19px !important;
    letter-spacing: 2px;
    font-weight: 600;
-   background-color: #edaecd;
+   background-color: #87e6ff;
    text-align: center;
    padding: 6px 0px;
    font-size: 30px;
@@ -204,6 +205,11 @@ progress {
     width: 100%;
  }
 
+ .sideBar{
+   position: relative;
+    z-index: 6;
+ }
+
  .next_experiment{
     opacity: 0;
     text-align: center;
@@ -243,6 +249,7 @@ progress {
     background-color: #059bf2;
 }
 
+
 .tt{
     transform: translate(10px, 80px);
 }
@@ -262,6 +269,11 @@ progress {
 .boom > img{
    height: 400px;
    width: 400px;
+}
+
+#bio{
+   top: 43px;
+   left: 135px;
 }
 
 @keyframes disappear {

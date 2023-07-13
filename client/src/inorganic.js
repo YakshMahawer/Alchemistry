@@ -11,11 +11,16 @@ import './inorganic.css'
 
 const Inorganic = () => {
   const navigate = useNavigate();
+  const [on, setOn] = useState(false);
   const [first, setFirst] = useState(true);
   const [datanum, setDatanum] = useState(0);
   const [wrong, setWrong] = useState(false);
   const [uans, setUAns] = useState('');
   function send_info(i){
+    setOn(true);
+    setTimeout(() => {
+      setOn(false);
+    }, 1000);
     setFirst(false);
     setDatanum(i);
   }
@@ -43,15 +48,15 @@ const Inorganic = () => {
       <Sidebar />
       <div className="working_space lab">
         <img className="school" src={back} alt="" />
-        <div className="note"><span className="note_text">NOTE: </span>All aqeuous solutions are of 1 M</div>
+        <div className="note"><span className="note_text">NOTE: </span>Refer Your Chemistry Lab Mannual Page - 51</div>
         <div className="logo"><img src={logo} alt="" /></div>
         <div className="experiment_area">
           <div className="visible_exp">
             {
-              (first)? <InCompoundImg/>:<InExpResult num = {datanum}/>
+              (first)? <InCompoundImg/>:<InExpResult num = {datanum} on = {on}/>
             }
           </div>
-          <div className="exp_buttons">
+          <div className="exp_buttons in_exp_button">
             <button onClick={()=> send_info(0)} className="hha">PT - H2SO4</button>
             <button onClick={()=> send_info(1)} className="hha">CT - Carbonate</button>
             <button onClick={()=> send_info(2)} className="hha">CT - Sulphide</button>

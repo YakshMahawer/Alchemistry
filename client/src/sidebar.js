@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./sidebar.css";
 import { NavLink } from "react-router-dom";
+import Star from './star.png'
 
 const Sidebar = () => {
   const [selectedTab, setSelectedTab] = useState("");
@@ -24,6 +25,8 @@ const Sidebar = () => {
         return "organic";
       case "/inorganic":
         return "inorganic";
+      case "/history":
+        return "history";
       default:
         return "";
     }
@@ -83,7 +86,7 @@ const Sidebar = () => {
                 selectedTab === "organic" ? "selected" : ""
               }`}
             >
-              <i className="fa-solid fa-c"></i>
+              <i class="fa-solid fa-user-plus"></i>
             </button>
           </div>
         </NavLink>
@@ -102,7 +105,26 @@ const Sidebar = () => {
                 selectedTab === "inorganic" ? "selected" : ""
               }`}
             >
-              <span>Na</span>
+              <i class="fa-solid fa-user-minus"></i>
+            </button>
+          </div>
+        </NavLink>
+        <NavLink
+          to="/history"
+          activeClassName="selected"
+          onClick={() => handleTabClick("history")}
+        >
+          <div
+            className={`element ${
+              selectedTab === "history" ? "selected" : ""
+            }`}
+          >
+            <button
+              className={`element_button ${
+                selectedTab === "history" ? "selected" : ""
+              }`}
+            >
+              <i class="fa-solid fa-clock-rotate-left"></i>
             </button>
           </div>
         </NavLink>

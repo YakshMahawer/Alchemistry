@@ -2,58 +2,63 @@ import React, { useState } from "react";
 import ResultCustomTestTube from "./result_testtube";
 import labgif from './labgigbl.gif'
 
-const ExpResult = ({num}) => {
+const ExpResult = ({num, on}) => {
+    const str = "M 218.985 165.204 V 384.283 C 218.985 397.931 232.87 409 250.003 409 C 267.136 409 281.02 397.935 281.02 384.283 V 300H 218.985 Z";
     const all_details = [
         {
-            "color": "#FFF000",
-            "characterstics": ["This this happened", "This also happenned", "This happend for sure", "This hapnem"]
+            //G0
+            "color": "#05b6b8",
+            "characterstics": ["Burnt Smell", "No smoke or precipitates formed", "The solution turned thick", "No precipitate formed on reaction with Nessler's Reagent"]
         },
         {
-            "color": "#FFF000",
-            "characterstics": ["This  happened", "This  happenned", "This happend  sure", "This hapnem"]
+            //G1
+            "color": "#0091ee",
+            "characterstics": ["No smoke", "Burnt Smell", "No precipitates formed", "No precipitates formed with conc. HCl"]
         },
         {
-            "color": "#FFF000",
-            "characterstics": ["This this happened", "This also happenned", " happend for sure", "This hapnem"]
+            //G2
+            "color": "#0070bc",
+            "characterstics": ["Precipitates formed", "No smoke", "Dissolved in Nitric Acid", "No specific smell"]
         },
         {
-            "color": "#FFF000",
-            "characterstics": ["This this ", "This also happenned", "This happend for sure", "This hapnem"]
+            //G3
+            "color": "#0070bc",
+            "characterstics": ["Pungent Smell due to Ammonia", "Solution became warm", "White smoke", "No precipitates formed"]
         },
         {
-            "color": "#FFF000",
-            "characterstics": ["This this happened", "This also happenned", "This happend for sure", "This hapnem"]
+            //G4
+            "color": "#bcbdbd",
+            "characterstics": ["No Smoke", "No precipitates formed", "Pungent Smell due to Ammonia", "No color appears"]
         },
         {
-            "color": "#FFF000",
-            "characterstics": ["This this happened", "This also happenned", "This happend for sure", "This hapnem"]
+            //G5
+            "color": "#0d00ea",
+            "characterstics": ["Pungent Smell due to Ammonia", "No smoke", "No precipitates formed", "No rwction with acetic acid"]
         },
         {
-            "color": "#FFF000",
-            "characterstics": ["This this happened", "This also happenned", "This happend for sure", "This hapnem"]
+            //G6
+            "color": "#0d00ea",
+            "characterstics": ["No Smoke", "No specific smell", "Does not dissolve in acetic acid", "No precipitates formed"]
         },
-        {
-            "color": "#FFF000",
-            "characterstics": ["This this happened", "This also happenned", "This happend for sure", "This hapnem"]
-        }
-
     ]
     const [data, setData] = useState(undefined);
     setTimeout(() => {
-        setData(all_details[0])
+        setData(all_details[num])
     }, 1000);
+
+    console.log(on);
 
     return(
         <div>
         {
-            (data === undefined)?(
+            (on)?(
                 <div className="load_div">
                     <img src={labgif} alt="" />
                 </div>
             ):
             (
                 <div className="result_div">
-                <ResultCustomTestTube color="#FFF000"/>
+                <ResultCustomTestTube color={all_details[num].color} str={str}/>
                 <div className="info_1">{all_details[num].characterstics[0]}</div>
                 <div className="info_2">{all_details[num].characterstics[1]}</div>
                 <div className="info_3">{all_details[num].characterstics[2]}</div>
